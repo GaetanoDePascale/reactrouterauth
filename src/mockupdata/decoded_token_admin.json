@@ -1,0 +1,8 @@
+{
+    "sub": "1234567890",
+    "name": "John Admin",
+    "iat": 1516239022,
+    "username": "admin",
+    "password": "admin",
+    "role": "admin"
+}
