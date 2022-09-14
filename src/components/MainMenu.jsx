@@ -1,21 +1,11 @@
 import React, { useState } from 'react';
-import {
-  UngroupOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  HomeOutlined,
-  CalendarOutlined,
-  LineChartOutlined,
-  SettingOutlined,
-  UnorderedListOutlined,
-  MobileOutlined,
-} from '@ant-design/icons';
-import { Menu, Spin } from 'antd';
+import { UngroupOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, CalendarOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
 export const MainMenu = (props) => {
-  const [defaultOpenKeys, setDefaultOpenKeys] = useState([]);
+  const [defaultOpenKeys] = useState([]);
   const { user } = useAuth();
 
   if (!user) {

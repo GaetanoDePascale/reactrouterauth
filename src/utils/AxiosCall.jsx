@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
 import { getMockupData } from '../mockupdata';
 
-var window;
+let window;
 const baseurl = window && window.__RUNTIME_CONFIG__ && window.__RUNTIME_CONFIG__.WEBAPI_URL;
 
 export const composeUrl = (url) => {
@@ -62,7 +62,6 @@ export async function doAxiosPatch(url, postParams, props) {
 export async function doAxiosPost(url, postParams, props) {
   try {
     if (url.startsWith('@')) {
-      // return { executionResult: false, error: 'ENDPOINT TO DO' };
       return getMockupData(url.substring(1));
     }
     const _url = composeUrl(url);

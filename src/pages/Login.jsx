@@ -10,7 +10,6 @@ export const LoginPage = (props) => {
   const { login } = useAuth();
 
   const handleSubmit = async (event) => {
-    //event.preventDefault();
     if ((username === 'admin' && password === 'admin') || (username === 'user' && password === 'user')) {
       let tokenFilename = '@not_found';
       let decodedTokenFilename = '@not_found';

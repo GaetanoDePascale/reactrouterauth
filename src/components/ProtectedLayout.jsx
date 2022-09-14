@@ -17,7 +17,7 @@ export const ProtectedLayout = () => {
   const { user } = useAuth();
 
   const userData = JSON.parse(localStorage.getItem('user'));
-  const [admin, setAdmin] = useState(userData.role === 'admin' ? true : false);
+  const [admin] = useState(userData.role === 'admin' ? true : false);
 
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export const ProtectedLayout = () => {
       setActiveItemId('/site/home');
       navigate('/site/home', { replace: true });
     }
-  }, [admin, activeItemId, setActiveItemId]);
+  }, [admin, activeItemId, setActiveItemId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleMenuClick = (e) => {
     if (e.key !== activeItemId) {
