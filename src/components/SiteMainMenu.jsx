@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UngroupOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined } from '@ant-design/icons';
+import { UngroupOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, CalculatorOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -20,6 +20,11 @@ export const SiteMainMenu = (props) => {
       key: '/site/userprofile',
       label: 'User Profile',
       icon: <UngroupOutlined />,
+    },
+    {
+      key: '/site/numberconversion',
+      label: 'Number conversion',
+      icon: <CalculatorOutlined />,
     },
   ];
 

@@ -10,6 +10,7 @@ import { SubMenu22 } from './pages/SubMenu22';
 import { SubMenu21 } from './pages/SubMenu21';
 import { SiteHomePage } from './pages/SiteHome';
 import { UserProfile } from './pages/UserProfile';
+import { NumberConversion } from './pages/NumberConversion';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
       <Route path="/site" element={<ProtectedLayout />}>
         <Route path="home" element={<SiteHomePage />} />
         <Route path="userProfile" element={<UserProfile />} />
+        <Route path="numberconversion" element={<NumberConversion />} />
       </Route>
     </Routes>
   );

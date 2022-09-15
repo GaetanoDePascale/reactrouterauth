@@ -3,7 +3,7 @@ export function formatNumber(x, precision) {
     return '-';
   }
   if (isNaN(+x)) {
-    return x;
+    return 'NaN';
   }
 
   const convertToNumber = +x;
