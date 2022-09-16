@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { formatNumber } from '../utils';
 
-export const NumberConversion = () => {
+const NumberConversion = () => {
   const [setPageTitle, setPageSubtitle] = useOutletContext();
   const [inputValue, setInputValue] = useState('');
   const [precision, setPrecision] = useState(0);
@@ -59,3 +59,5 @@ export const NumberConversion = () => {
     </>
   );
 };
+
+export default NumberConversion;

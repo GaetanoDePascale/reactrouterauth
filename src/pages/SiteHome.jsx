@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
-export const SiteHomePage = () => {
+const SiteHomePage = () => {
   const [setPageTitle, setPageSubtitle] = useOutletContext();
   useEffect(() => {
     // setPageTitle('Application');
@@ -10,3 +10,5 @@ export const SiteHomePage = () => {
 
   return <></>;
 };
+
+export default SiteHomePage;

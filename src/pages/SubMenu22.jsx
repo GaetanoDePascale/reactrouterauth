@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
-export const SubMenu22 = (props) => {
+const SubMenu22 = (props) => {
   const [setPageTitle, setPageSubtitle] = useOutletContext();
   useEffect(() => {
     // setPageTitle('Application');
@@ -10,3 +10,5 @@ export const SubMenu22 = (props) => {
 
   return <>aaaaa</>;
 };
+
+export default SubMenu22;

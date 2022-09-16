@@ -9,7 +9,7 @@ import { SiteMainMenu } from './SiteMainMenu';
 
 const { Header, Sider, Content, Footer } = Layout;
 
-export const ProtectedLayout = () => {
+const ProtectedLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [activeItemId, setActiveItemId] = useState('/');
   const [pageTitle, setPageTitle] = useState('Application');
@@ -87,3 +87,5 @@ export const ProtectedLayout = () => {
     </div>
   );
 };
+
+export default ProtectedLayout;

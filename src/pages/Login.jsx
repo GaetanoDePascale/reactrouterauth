@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { doAxiosGet } from '../utils/AxiosCall';
 
-export const LoginPage = (props) => {
+const LoginPage = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
@@ -107,3 +107,5 @@ export const LoginPage = (props) => {
     </div>
   );
 };
+
+export default LoginPage;
