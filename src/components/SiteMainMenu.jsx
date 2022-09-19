@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UngroupOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, CalculatorOutlined } from '@ant-design/icons';
+import { UngroupOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, CalculatorOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -25,6 +25,11 @@ export const SiteMainMenu = (props) => {
       key: '/site/numberconversion',
       label: 'Number conversion',
       icon: <CalculatorOutlined />,
+    },
+    {
+      key: '/site/todolistapplication',
+      label: 'ToDo List Application',
+      icon: <UnorderedListOutlined />,
     },
   ];
 

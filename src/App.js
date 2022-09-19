@@ -24,6 +24,7 @@ const SubMenu21 = React.lazy(() => import('./pages/SubMenu21'));
 const SiteHomePage = React.lazy(() => import('./pages/SiteHome'));
 const UserProfile = React.lazy(() => import('./pages/UserProfile'));
 const NumberConversion = React.lazy(() => import('./pages/NumberConversion'));
+const TodoListApplication = React.lazy(() => import('./pages/todolistapplication/TodoListApplication'));
 
 export default function App() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="home" element={<SiteHomePage />} />
           <Route path="userProfile" element={<UserProfile />} />
           <Route path="numberconversion" element={<NumberConversion />} />
+          <Route path="todolistapplication" element={<TodoListApplication />} />
         </Route>
       </Routes>
     </Suspense>
