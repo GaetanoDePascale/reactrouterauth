@@ -20,7 +20,6 @@ const Addtodo = () => {
 
   return (
     <>
-      Add todo task
       <Form
         form={form}
         name="frmLogin"
