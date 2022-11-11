@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import './styles.css';
 import 'antd/dist/antd.min.css';
+import TicTacToeGame from './pages/tictactoe/TicTacToeGame';
 
 // import { LoginPage } from './pages/Login';
 // import { HomePage } from './pages/Home';
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="userProfile" element={<UserProfile />} />
           <Route path="numberconversion" element={<NumberConversion />} />
           <Route path="todolistapplication" element={<TodoListApplication />} />
+          <Route path="games/tictactoe" element={<TicTacToeGame />} />
         </Route>
       </Routes>
     </Suspense>

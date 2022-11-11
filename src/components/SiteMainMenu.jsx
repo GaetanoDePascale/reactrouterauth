@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { UngroupOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, CalculatorOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import {
+  UngroupOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  HomeOutlined,
+  CalculatorOutlined,
+  UnorderedListOutlined,
+  PlayCircleOutlined,
+  CloseOutlined,
+} from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -30,6 +39,18 @@ export const SiteMainMenu = (props) => {
       key: '/site/todolistapplication',
       label: 'ToDo List Application',
       icon: <UnorderedListOutlined />,
+    },
+    {
+      key: '/site/games',
+      label: 'Games',
+      icon: <PlayCircleOutlined />,
+      children: [
+        {
+          key: '/site/games/tictactoe',
+          label: 'Tic Tac Toe',
+          icon: <CloseOutlined />,
+        },
+      ],
     },
   ];
 
