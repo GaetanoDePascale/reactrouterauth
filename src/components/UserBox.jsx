@@ -1,6 +1,7 @@
 import { Avatar, Col, Popover, Row, Space } from 'antd';
 import { useAuth } from '../hooks/useAuth';
 import { LogoutOutlined, UserOutlined, DownOutlined } from '@ant-design/icons';
+import { rowGutter } from '../utils';
 
 export const UserBox = () => {
   const { logout } = useAuth();
@@ -9,7 +10,7 @@ export const UserBox = () => {
 
   const userTitleBox = (
     <>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[...rowGutter]}>
         <Col span={20}>Benvenuto, {userData.username}</Col>
         <Col span={4}>
           <LogoutOutlined
@@ -24,7 +25,7 @@ export const UserBox = () => {
   );
   const userInfoBox = (
     <>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[...rowGutter]}>
         <Col span={24}>{userData.role}</Col>
       </Row>
     </>

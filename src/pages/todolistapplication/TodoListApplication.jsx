@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { useOutletContext } from 'react-router-dom';
 import { store } from '../../store';
+import { rowGutter } from '../../utils';
 import Addtodo from './AddToDo';
 import TodoList from './TodoList';
 
@@ -47,7 +48,7 @@ const TodoListApplication = () => {
 
   return (
     <Provider store={store}>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[...rowGutter]}>
         <Col xs={24} md={24} xl={7}>
           <Addtodo />
         </Col>

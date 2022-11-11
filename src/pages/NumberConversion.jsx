@@ -1,7 +1,7 @@
 import { Button, Col, Input, InputNumber, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { formatNumber } from '../utils';
+import { formatNumber, rowGutter } from '../utils';
 
 const NumberConversion = () => {
   const [setPageTitle, setPageSubtitle] = useOutletContext();
@@ -16,7 +16,7 @@ const NumberConversion = () => {
 
   return (
     <>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[...rowGutter]}>
         <Col span={8}>Insert value:</Col>
         <Col span={16}>
           <Input
@@ -28,7 +28,7 @@ const NumberConversion = () => {
           />
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[...rowGutter]}>
         <Col span={8}>Precision:</Col>
         <Col span={16}>
           <InputNumber
@@ -44,16 +44,18 @@ const NumberConversion = () => {
           />
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[...rowGutter]}>
         <Col span={8}></Col>
         <Col span={16}>
-          <Button onClick={() => setResultValue(formatNumber(inputValue, precision))}>Convert</Button>
+          <Button onClick={() => setResultValue(formatNumber(inputValue, precision))} style={{ marginBottom: 8, display: 'block' }}>
+            Convert
+          </Button>
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[...rowGutter]}>
         <Col span={8}>Result</Col>
         <Col span={16}>
-          <Input id="txtResult" value={resultValue} readOnly={true} />
+          <Input id="txtResult" value={resultValue} readOnly={true} style={{ marginBottom: 8, display: 'block' }} />
         </Col>
       </Row>
     </>

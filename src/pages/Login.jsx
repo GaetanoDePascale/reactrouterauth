@@ -2,6 +2,7 @@ import { Button, Col, Form, Input, notification, Row } from 'antd';
 import React, { useState } from 'react';
 
 import { useAuth } from '../hooks/useAuth';
+import { rowGutter } from '../utils';
 import { doAxiosGet } from '../utils/AxiosCall';
 
 const LoginPage = (props) => {
@@ -32,7 +33,6 @@ const LoginPage = (props) => {
         login({
           token: token.data.token,
           username: decodedToken.data.username,
-          password: decodedToken.data.password,
           role: decodedToken.data.username === 'admin' ? 'admin' : 'user',
         });
         return;
@@ -59,7 +59,7 @@ const LoginPage = (props) => {
         onFinishFailed={(errorInfo) => console.log('Failed:', errorInfo)}
         onKeyDown={(e) => (e.keyCode === 13 ? e.preventDefault() : undefined)}
       >
-        <Row gutter={[16, 16]}>
+        <Row gutter={[...rowGutter]}>
           <Col span={24} style={{ textAlign: 'center' }}>
             <Form.Item
               label={'UserName'}
@@ -71,7 +71,7 @@ const LoginPage = (props) => {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={[16, 16]}>
+        <Row gutter={[...rowGutter]}>
           <Col span={24} style={{ textAlign: 'center' }}>
             <Form.Item
               label={'Password'}
@@ -84,7 +84,7 @@ const LoginPage = (props) => {
           </Col>
         </Row>
         <Form.Item>
-          <Row gutter={[16, 16]}>
+          <Row gutter={[...rowGutter]}>
             <Col span={12} style={{ textAlign: 'center' }}>
               <Button type="primary" htmlType="submit" style={{ borderRadius: '15%' }}>
                 Login
