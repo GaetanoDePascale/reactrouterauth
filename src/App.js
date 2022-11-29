@@ -4,17 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import './styles.css';
 import 'antd/dist/antd.min.css';
-import TicTacToeGame from './pages/tictactoe/TicTacToeGame';
-
-// import { LoginPage } from './pages/Login';
-// import { HomePage } from './pages/Home';
-// import { ProtectedLayout } from './components/ProtectedLayout';
-// import { Menu3 } from './pages/Menu3';
-// import { SubMenu22 } from './pages/SubMenu22';
-// import { SubMenu21 } from './pages/SubMenu21';
-// import { SiteHomePage } from './pages/SiteHome';
-// import { UserProfile } from './pages/UserProfile';
-// import { NumberConversion } from './pages/NumberConversion';
+import { wordList } from './pages/wordle';
 
 const LoginPage = React.lazy(() => import('./pages/Login'));
 const HomePage = React.lazy(() => import('./pages/Home'));
@@ -26,6 +16,12 @@ const SiteHomePage = React.lazy(() => import('./pages/SiteHome'));
 const UserProfile = React.lazy(() => import('./pages/UserProfile'));
 const NumberConversion = React.lazy(() => import('./pages/NumberConversion'));
 const TodoListApplication = React.lazy(() => import('./pages/todolistapplication/TodoListApplication'));
+const TicTacToeGame = React.lazy(() => import('./pages/tictactoe/TicTacToeGame'));
+const DataComponent = React.lazy(() => import('./pages/recursivecomponent/DataComponent'));
+const WordleGame = React.lazy(() => import('./pages/wordle/WordleGame'));
+const ComponentTest = React.lazy(() => import('./pages/ComponentTest'));
+
+//const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
 
 export default function App() {
   return (
@@ -38,13 +34,16 @@ export default function App() {
           <Route path="submenu21" element={<SubMenu21 />} />
           <Route path="submenu22" element={<SubMenu22 />} />
           <Route path="menu3" element={<Menu3 />} />
+          <Route path="componenttest" element={<ComponentTest />} />
         </Route>
         <Route path="/site" element={<ProtectedLayout />}>
           <Route path="home" element={<SiteHomePage />} />
           <Route path="userProfile" element={<UserProfile />} />
           <Route path="numberconversion" element={<NumberConversion />} />
+          <Route path="recursivecomponent" element={<DataComponent />} />
           <Route path="todolistapplication" element={<TodoListApplication />} />
           <Route path="games/tictactoe" element={<TicTacToeGame />} />
+          <Route path="games/wordle" element={<WordleGame {...{wordList, solution: wordList[Math.floor(Math.random() * wordList.length)], nbRows: 5, nbCols: 5 }} />} />
         </Route>
       </Routes>
     </Suspense>

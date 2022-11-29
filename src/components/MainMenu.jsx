@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UngroupOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, CalendarOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { UngroupOutlined, MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, CalendarOutlined, UnorderedListOutlined, WindowsOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -26,6 +26,7 @@ export const MainMenu = (props) => {
       ],
     },
     { key: '/menu3', label: 'Menu 3', icon: <UngroupOutlined /> },
+    { key: '/componenttest', label: 'Modal', icon: <WindowsOutlined /> },
   ];
 
   return (
@@ -35,22 +36,7 @@ export const MainMenu = (props) => {
         onClick: props.toggle,
         title: props.collapsed ? 'Espandi menu' : 'Riduci menu',
       })}
-      <Menu theme={'light'} selectedKeys={[props.activeItemId]} defaultOpenKeys={defaultOpenKeys} onClick={props.handleMenuClick} items={menuItems}>
-        {/* <Menu.Item icon={<HomeOutlined />} key="/menu1" title="Menu 1">
-          Menu 1
-        </Menu.Item>
-        <Menu.SubMenu icon={<CalendarOutlined />} key="/menu2" title="Menu 2">
-          <Menu.Item icon={<CalendarOutlined />} key="/submenu2.1" title="Submenu 2.1">
-            Submenu 2.1
-          </Menu.Item>
-          <Menu.Item icon={<UnorderedListOutlined />} key="/submenu2.2" title="Submenu 2.2">
-            Submenu 2.2
-          </Menu.Item>
-        </Menu.SubMenu>
-        <Menu.Item icon={<UngroupOutlined />} key="/menu3" title="Menu 3">
-          Menu 3
-        </Menu.Item> */}
-      </Menu>
+      <Menu theme={'light'} selectedKeys={[props.activeItemId]} defaultOpenKeys={defaultOpenKeys} onClick={props.handleMenuClick} items={menuItems} />
     </div>
   );
 };

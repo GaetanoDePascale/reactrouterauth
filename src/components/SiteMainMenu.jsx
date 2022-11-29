@@ -8,6 +8,8 @@ import {
   UnorderedListOutlined,
   PlayCircleOutlined,
   CloseOutlined,
+  OrderedListOutlined,
+  FontColorsOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
@@ -36,6 +38,11 @@ export const SiteMainMenu = (props) => {
       icon: <CalculatorOutlined />,
     },
     {
+      key: '/site/recursivecomponent',
+      label: 'Recursive Component',
+      icon: <OrderedListOutlined />,
+    },
+    {
       key: '/site/todolistapplication',
       label: 'ToDo List Application',
       icon: <UnorderedListOutlined />,
@@ -49,6 +56,11 @@ export const SiteMainMenu = (props) => {
           key: '/site/games/tictactoe',
           label: 'Tic Tac Toe',
           icon: <CloseOutlined />,
+        },
+        {
+          key: '/site/games/wordle',
+          label: 'Wordle',
+          icon: <FontColorsOutlined />,
         },
       ],
     },
