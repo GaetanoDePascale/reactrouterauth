@@ -3,7 +3,7 @@ import { Spin } from 'antd';
 import { Routes, Route } from 'react-router-dom';
 
 import './styles.css';
-import 'antd/dist/antd.min.css';
+// import 'antd/dist/antd.min.css';
 import { wordList } from './pages/wordle';
 
 const LoginPage = React.lazy(() => import('./pages/Login'));
