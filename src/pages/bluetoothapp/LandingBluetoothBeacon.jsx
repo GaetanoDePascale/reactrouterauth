@@ -18,6 +18,10 @@ const LandingBluetoothBeacon = () => {
             return;
         }
 
+        navigator.bluetooth.onadvertisementreceived = advertisementreceived;
+
+        console.log('navigator.bluetooth', navigator.bluetooth);
+
         try {
             console.log("...");
             // Inizia l'ascolto dei segnali dai beacon Bluetooth
