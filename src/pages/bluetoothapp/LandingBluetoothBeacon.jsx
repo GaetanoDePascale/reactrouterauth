@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 const LandingBluetoothBeacon = () => {
-    const [beaconData, setBeaconData] = useState(null);
+    const [setPageTitle, setPageSubtitle] = useOutletContext();
+    const [beaconData, setBeaconData] = useState([]);
     const [error, setError] = useState(undefined);
     const [solution, setSolution] = useState(undefined);
 
+    const [beacons, setBeacons] = useState(<p>Cercando beacon...</p>);
+
     const advertisementreceived = (event) => {
-        console.log(event);
-        setBeaconData(event.device);
+        if (beaconData.findIndex(i => i.id === event.device.id) < 0) {
+            const beaconDataTemp = beaconData;
+            beaconDataTemp.push(event.device);
+            setBeaconData(beaconDataTemp);
+        }
     };
 
     useEffect(() => {
+        setPageSubtitle('Beacon Bluetooth Test');
         console.log("starting...");
         // Verifica se il browser supporta l'API Web Bluetooth
         if (!navigator.bluetooth) {
@@ -18,7 +26,7 @@ const LandingBluetoothBeacon = () => {
             return;
         }
 
-        navigator.bluetooth.onadvertisementreceived = advertisementreceived;
+        //navigator.bluetooth.onadvertisementreceived = advertisementreceived;
 
         console.log('navigator.bluetooth', navigator.bluetooth);
 
@@ -46,7 +54,7 @@ const LandingBluetoothBeacon = () => {
             };
         } catch (ex) {
             setError(ex);
-            if (error.message === 'navigator.bluetooth.requestLEScan is not a function') {
+            if (ex.message === 'navigator.bluetooth.requestLEScan is not a function') {
                 const url = 'https://github.com/WebBluetoothCG/web-bluetooth/blob/main/implementation-status.md#scanning-api';
                 setSolution(
                     <>
@@ -59,22 +67,32 @@ const LandingBluetoothBeacon = () => {
             }
         };
 
-    }, []);
+    }, [setPageTitle, setPageSubtitle]);
 
-
-    const notError = (data) => data ? (
-        <div>
-            <p>Beacon trovato: {data.name}</p>
-            <p>Identificativo beacon: {data.id}</p>
-        </div>
-    ) : (
-        <p>Cercando beacon...</p>
-    );
+    // const notError = (beacons) => beacons ? (
+    //     beacons && beacons.length > 0 && beacons.map((data) => {
+    //         return (<div>
+    //             <p>Beacon trovato: {data.name}</p>
+    //             <p>Identificativo beacon: {data.id}</p>
+    //         </div>)
+    //     })
+    // ) : (
+    //     <p>Cercando beacon...</p>
+    // );
 
     return (
-        <div>
+        <>
             {error === undefined ?
-                notError(beaconData)
+                <ul>
+                    {
+                        beaconData.map((data, index) => {
+                            return (<li key={'li_' + index}>
+                                Id: {data.id}
+                                <br />
+                                Name: {data.name}
+                            </li>)
+                        })}
+                </ul>
                 :
                 <p>
                     <b>Errore:</b> {error.message}
@@ -84,7 +102,7 @@ const LandingBluetoothBeacon = () => {
                         <></>
                     }
                 </p>}
-        </div>
+        </>
     );
 };
 
