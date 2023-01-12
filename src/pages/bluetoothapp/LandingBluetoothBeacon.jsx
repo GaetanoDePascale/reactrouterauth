@@ -5,7 +5,13 @@ const LandingBluetoothBeacon = () => {
     const [error, setError] = useState(undefined);
     const [solution, setSolution] = useState(undefined);
 
+    const advertisementreceived = (event) => {
+        console.log(event);
+        setBeaconData(event.device);
+    };
+
     useEffect(() => {
+        console.log("starting...");
         // Verifica se il browser supporta l'API Web Bluetooth
         if (!navigator.bluetooth) {
             alert("Il tuo browser non supporta l'API Web Bluetooth");
@@ -13,31 +19,37 @@ const LandingBluetoothBeacon = () => {
         }
 
         try {
+            console.log("...");
             // Inizia l'ascolto dei segnali dai beacon Bluetooth
-            navigator.bluetooth.requestLEScan({ acceptAllAdvertisements: true }).then(() => {
-                console.log("Scanning for beacon signals...");
-            }).catch(error => {
-                console.log(`Scanning failed: ${error}`);
-            });
+            navigator.bluetooth.requestLEScan({ acceptAllAdvertisements: true })
+                .then(() => {
+                    console.log("Scanning for beacon signals...");
+                    navigator.bluetooth.addEventListener('advertisementreceived', advertisementreceived);
+                })
+                .catch(requestLEScanError => {
+                    console.log(`Scanning failed: ${requestLEScanError}`);
+                });
 
-            navigator.bluetooth.addEventListener('advertisementreceived', event => {
-                console.log(event.device);
-                setBeaconData(event.device);
-            });
+            // navigator.bluetooth.addEventListener('advertisementreceived', event => {
+            //     console.log(event.device);
+            //     setBeaconData(event.device);
+            // });
 
             // Rimuovi l'ascolto dei segnali quando il componente non è più montato
             return () => {
-                navigator.bluetooth.removeEventListener('advertisementreceived');
+                console.log("closing...");
+                navigator.bluetooth.removeEventListener('advertisementreceived', advertisementreceived);
             };
-        } catch (error) {
-            setError(error);
+        } catch (ex) {
+            setError(ex);
             if (error.message === 'navigator.bluetooth.requestLEScan is not a function') {
+                const url = 'https://github.com/WebBluetoothCG/web-bluetooth/blob/main/implementation-status.md#scanning-api';
                 setSolution(
                     <>
                         <br /><br /><b>Soluzione:</b><br />
                         requestLEScan is behind a flag in Chrome (chrome://flags/#enable-experimental-web-platform-features).
                         <br />
-                        See <a href="https://github.com/WebBluetoothCG/web-bluetooth/blob/main/implementation-status.md#scanning-api" target={'_blank'}>https://github.com/WebBluetoothCG/web-bluetooth/blob/main/implementation-status.md#scanning-api</a>.
+                        See <a href={url} target={'_blank'}>{url}</a>.
                     </>
                 )
             }
@@ -45,17 +57,20 @@ const LandingBluetoothBeacon = () => {
 
     }, []);
 
+
+    const notError = (data) => data ? (
+        <div>
+            <p>Beacon trovato: {data.name}</p>
+            <p>Identificativo beacon: {data.id}</p>
+        </div>
+    ) : (
+        <p>Cercando beacon...</p>
+    );
+
     return (
         <div>
             {error === undefined ?
-                beaconData ? (
-                    <div>
-                        <p>Beacon trovato: {beaconData.name}</p>
-                        <p>Identificativo beacon: {beaconData.id}</p>
-                    </div>
-                ) : (
-                    <p>Cercando beacon...</p>
-                )
+                notError(beaconData)
                 :
                 <p>
                     <b>Errore:</b> {error.message}
