@@ -81,7 +81,7 @@ const LandingBluetoothBeacon = () => {
     // );
 
     return (
-        <>
+        <div>
             {error === undefined ?
                 <ul>
                     {
@@ -102,7 +102,7 @@ const LandingBluetoothBeacon = () => {
                         <></>
                     }
                 </p>}
-        </>
+        </div>
     );
 };
 
