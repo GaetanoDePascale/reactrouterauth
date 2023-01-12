@@ -1,4 +1,4 @@
-import { BackTop, Col, Layout, Row } from 'antd';
+import { FloatButton, Col, Layout, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import { Navigate, useNavigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -45,7 +45,7 @@ const ProtectedLayout = () => {
 
   return (
     <div>
-      <BackTop />
+      <FloatButton.BackTop />
       <Layout style={{ height: '100%' }}>
         <Sider trigger={null} theme={'light'} breakpoint="lg" collapsedWidth="80" onBreakpoint={(broken) => setCollapsed(broken)} collapsed={collapsed}>
           {admin ? (

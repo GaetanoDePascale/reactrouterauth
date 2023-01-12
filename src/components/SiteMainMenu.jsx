@@ -10,6 +10,8 @@ import {
   CloseOutlined,
   OrderedListOutlined,
   FontColorsOutlined,
+  QuestionOutlined,
+  WifiOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
@@ -43,6 +45,11 @@ export const SiteMainMenu = (props) => {
       icon: <OrderedListOutlined />,
     },
     {
+      key: '/site/conditionalwrapper',
+      label: 'Conditional Wrapper',
+      icon: <QuestionOutlined />,
+    },
+    {
       key: '/site/todolistapplication',
       label: 'ToDo List Application',
       icon: <UnorderedListOutlined />,
@@ -61,6 +68,28 @@ export const SiteMainMenu = (props) => {
           key: '/site/games/wordle',
           label: 'Wordle',
           icon: <FontColorsOutlined />,
+        },
+      ],
+    },
+    {
+      key: '/site/bluetooth',
+      label: 'Bluetooth',
+      icon: <WifiOutlined />,
+      children: [
+        {
+          key: '/site/bluetooth/landing',
+          label: 'Bluetooth Devices',
+          icon: <WifiOutlined />,
+        },
+        {
+          key: '/site/bluetooth/beacon',
+          label: 'Bluetooth Beacon',
+          icon: <WifiOutlined />,
+        },
+        {
+          key: '/site/bluetooth/reactbluetooth',
+          label: 'react-bluetooth',
+          icon: <WifiOutlined />,
         },
       ],
     },

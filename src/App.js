@@ -20,6 +20,10 @@ const TicTacToeGame = React.lazy(() => import('./pages/tictactoe/TicTacToeGame')
 const DataComponent = React.lazy(() => import('./pages/recursivecomponent/DataComponent'));
 const WordleGame = React.lazy(() => import('./pages/wordle/WordleGame'));
 const ComponentTest = React.lazy(() => import('./pages/ComponentTest'));
+const ConditionalWrapperPage = React.lazy(() => import('./pages/conditionalwrapper/ConditionalWrapperPage'));
+const LandingBluetooth = React.lazy(() => import('./pages/bluetoothapp/LandingBluetooth'));
+const LandingBluetoothBeacon = React.lazy(() => import('./pages/bluetoothapp/LandingBluetoothBeacon'));
+const LandingReactBluetooth = React.lazy(() => import('./pages/bluetoothapp/LandingReactBluetooth'));
 
 //const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
 
@@ -41,9 +45,13 @@ export default function App() {
           <Route path="userProfile" element={<UserProfile />} />
           <Route path="numberconversion" element={<NumberConversion />} />
           <Route path="recursivecomponent" element={<DataComponent />} />
+          <Route path="conditionalwrapper" element={<ConditionalWrapperPage />} />
           <Route path="todolistapplication" element={<TodoListApplication />} />
           <Route path="games/tictactoe" element={<TicTacToeGame />} />
-          <Route path="games/wordle" element={<WordleGame {...{wordList, solution: wordList[Math.floor(Math.random() * wordList.length)], nbRows: 5, nbCols: 5 }} />} />
+          <Route path="games/wordle" element={<WordleGame {...{ wordList, solution: wordList[Math.floor(Math.random() * wordList.length)], nbRows: 5, nbCols: 5 }} />} />
+          <Route path="bluetooth/landing" element={<LandingBluetooth />} />
+          <Route path="bluetooth/beacon" element={<LandingBluetoothBeacon />} />
+          <Route path="bluetooth/reactbluetooth" element={<LandingReactBluetooth />} />
         </Route>
       </Routes>
     </Suspense>
