@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 
-
 const LandingBluetoothBeacon = () => {
   const [devices, setDevices] = useState([]);
 
@@ -17,9 +16,8 @@ const LandingBluetoothBeacon = () => {
           console.log("> Name:             " + device.name);
           console.log("> Id:               " + device.id);
           console.log("> Connected:        " + device.gatt.connected);
-          device.watchAdvertisements();
-          device.addEventListener('advertisementreceived', interpretIBeacon );
           setDevices([...devices, device]);
+          device.gatt.connect();
         })
         .then(service => {
           // console.log(service.characteristic.uuid);
@@ -36,25 +34,6 @@ const LandingBluetoothBeacon = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  function interpretIBeacon(event) {
-    let rssi = event.rssi;
-    let appleData = event.manufacturerData.get(0x004C);
-    // if (appleData.byteLength != 23 ||
-    //   appleData.getUint16(0, false) !== 0x0215) {
-    //   console.log({isBeacon: false});
-    // }
-    let uuidArray = new Uint8Array(appleData.buffer, 2, 16);
-    let major = appleData.getUint16(18, false);
-    let minor = appleData.getUint16(20, false);
-    let txPowerAt1m = -appleData.getInt8(22);
-    console.log({
-        isBeacon: true,
-        uuidArray,
-        major,
-        minor,
-        pathLossVs1m: txPowerAt1m - rssi});
   };
 
   return (
