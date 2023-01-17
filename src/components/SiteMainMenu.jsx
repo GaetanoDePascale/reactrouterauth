@@ -40,6 +40,11 @@ export const SiteMainMenu = (props) => {
       icon: <CalculatorOutlined />,
     },
     {
+      key: '/site/randomnumber',
+      label: 'Random Number',
+      icon: <QuestionOutlined />,
+    },
+    {
       key: '/site/recursivecomponent',
       label: 'Recursive Component',
       icon: <OrderedListOutlined />,

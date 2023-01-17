@@ -24,6 +24,7 @@ const ConditionalWrapperPage = React.lazy(() => import('./pages/conditionalwrapp
 const LandingBluetooth = React.lazy(() => import('./pages/bluetoothapp/LandingBluetooth'));
 const LandingBluetoothBeacon = React.lazy(() => import('./pages/bluetoothapp/LandingBluetoothBeacon'));
 const LandingReactBluetooth = React.lazy(() => import('./pages/bluetoothapp/LandingReactBluetooth'));
+const RandomNumber = React.lazy(() => import('./pages/RandomNumber'));
 
 //const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
 
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="bluetooth/landing" element={<LandingBluetooth />} />
           <Route path="bluetooth/beacon" element={<LandingBluetoothBeacon />} />
           <Route path="bluetooth/reactbluetooth" element={<LandingReactBluetooth />} />
+          <Route path="randomnumber" element={<RandomNumber />} />
         </Route>
       </Routes>
     </Suspense>
