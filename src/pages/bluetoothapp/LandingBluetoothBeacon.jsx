@@ -37,14 +37,12 @@ const LandingBluetoothBeacon = () => {
           let queue = Promise.resolve();
           service.forEach(service => {
             queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
-              console.log(service);
               console.log('> Service: ' + service.uuid);
               characteristics.forEach(characteristic => {
                 console.log('>> Characteristic: ' + characteristic.uuid + ' ' + getSupportedProperties(characteristic));
               });
             }));
           });
-          console.log(service);
           return queue;
         })
     } catch (error) {
