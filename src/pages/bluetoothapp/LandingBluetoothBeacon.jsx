@@ -4,58 +4,68 @@ import { Button, Table } from 'react-bootstrap';
 
 const LandingBluetoothBeacon = () => {
   const [devices, setDevices] = useState([]);
-
+  const [services, setServices] = useState([]);
+  const [characteristics, setCharacteristics] = useState([]);
+  const OPTIONAL_SERVICE = 'generic_access';
 
   const handleScan = async () => {
     // Utilizzare la Web API 'Web Bluetooth' per la scansione dei beacon BLE
     try {
       navigator.bluetooth.requestDevice({
-        acceptAllDevices: true,
-        optionalServices: ['battery_service'] // Required to access service later.
+        // acceptAllDevices: true,
+
+        filters: [
+          { services: [0xfeaa], }
+        ]
+
+        , optionalServices: [OPTIONAL_SERVICE]
       })
         .then(device => {
           console.log("> Name:             " + device.name);
           console.log("> Id:               " + device.id);
-          console.log("> Connected:        " + device.gatt.connected);
-          device.watchAdvertisements();
-          device.addEventListener('advertisementreceived', interpretIBeacon );
+          console.log("> Connecting to GATT Server...");
           setDevices([...devices, device]);
+          return device.gatt.connect();
+        })
+        .then(server => {
+          console.log("Getting Service of kind: " + OPTIONAL_SERVICE);
+          setServices([...services, server]);
+          return server.getPrimaryServices();
         })
         .then(service => {
-          // console.log(service.characteristic.uuid);
-        })
-        .then(characteristic => {
-          // console.log(characteristic);
-        })
-        .then(descriptors => {
-          // console.log(descriptors);
-        })
-        .then(value => {
-          // console.log(value);
+          console.log("Getting Characteristic...");
+          let queue = Promise.resolve();
+          service.forEach(service => {
+            queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
+              console.log(service);
+              console.log('> Service: ' + service.uuid);
+              characteristics.forEach(characteristic => {
+                console.log('>> Characteristic: ' + characteristic.uuid + ' ' + getSupportedProperties(characteristic));
+              });
+            }));
+          });
+          console.log(service);
+          return queue;
         })
     } catch (error) {
       console.log(error);
     }
   };
 
-  function interpretIBeacon(event) {
-    let rssi = event.rssi;
-    let appleData = event.manufacturerData.get(0x004C);
-    // if (appleData.byteLength != 23 ||
-    //   appleData.getUint16(0, false) !== 0x0215) {
-    //   console.log({isBeacon: false});
-    // }
-    let uuidArray = new Uint8Array(appleData.buffer, 2, 16);
-    let major = appleData.getUint16(18, false);
-    let minor = appleData.getUint16(20, false);
-    let txPowerAt1m = -appleData.getInt8(22);
-    console.log({
-        isBeacon: true,
-        uuidArray,
-        major,
-        minor,
-        pathLossVs1m: txPowerAt1m - rssi});
-  };
+  /* Utils */
+
+  function getSupportedProperties(characteristic) {
+    let supportedProperties = [];
+    for (const p in characteristic.properties) {
+      if (characteristic.properties[p] === true) {
+        supportedProperties.push(p.toUpperCase());
+      }
+    }
+    return '[' + supportedProperties.join(', ') + ']';
+  }
+
+
+
 
   return (
     <div>
