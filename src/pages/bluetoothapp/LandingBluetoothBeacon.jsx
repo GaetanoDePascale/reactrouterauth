@@ -4,8 +4,6 @@ import { Button, Table } from 'react-bootstrap';
 
 const LandingBluetoothBeacon = () => {
   const [devices, setDevices] = useState([]);
-  const [services, setServices] = useState([]);
-  const [characteristics, setCharacteristics] = useState([]);
   const OPTIONAL_SERVICE = 'generic_access';
 
   const handleScan = async () => {
@@ -17,34 +15,34 @@ const LandingBluetoothBeacon = () => {
         filters: [
           { services: [0xfeaa], }
         ]
-
-        , optionalServices: [OPTIONAL_SERVICE]
+        // , optionalServices: [OPTIONAL_SERVICE]
       })
         .then(device => {
+          setDevices([...devices, device]);
+          console.log("> Connected to this device-->");
           console.log("> Name:             " + device.name);
           console.log("> Id:               " + device.id);
-          console.log("> Connecting to GATT Server...");
-          setDevices([...devices, device]);
-          return device.gatt.connect();
-        })
-        .then(server => {
-          console.log("Getting Service of kind: " + OPTIONAL_SERVICE);
-          setServices([...services, server]);
-          return server.getPrimaryServices();
-        })
-        .then(service => {
-          console.log("Getting Characteristic...");
-          let queue = Promise.resolve();
-          service.forEach(service => {
-            queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
-              console.log('> Service: ' + service.uuid);
-              characteristics.forEach(characteristic => {
-                console.log('>> Characteristic: ' + characteristic.uuid + ' ' + getSupportedProperties(characteristic));
-              });
-            }));
+          device.watchAdvertisements();
+          return device.addEventListener('advertisementreceived', (event) => {
+            console.log('Advertisement received.');
+            console.log('  Device Name: ' + event.device.name);
+            console.log('  Device ID: ' + event.device.id);
+            console.log('  RSSI: ' + event.rssi);
+            console.log('  TX Power: ' + event.txPower);
+            console.log('  UUIDs: ' + event.uuids);
+            event.manufacturerData.forEach((valueDataView, key) => {
+              logDataView('Manufacturer', key, valueDataView);
+            });
+            event.serviceData.forEach((valueDataView, key) => {
+              logDataView('Service', key, valueDataView);
+            });
+            device.forget();
           });
-          return queue;
         })
+      // .then(server => {
+      // })
+      // .then(service => {
+      // })
     } catch (error) {
       console.log(error);
     }
@@ -52,16 +50,18 @@ const LandingBluetoothBeacon = () => {
 
   /* Utils */
 
-  function getSupportedProperties(characteristic) {
-    let supportedProperties = [];
-    for (const p in characteristic.properties) {
-      if (characteristic.properties[p] === true) {
-        supportedProperties.push(p.toUpperCase());
-      }
-    }
-    return '[' + supportedProperties.join(', ') + ']';
-  }
 
+
+  const logDataView = (labelOfDataSource, key, valueDataView) => {
+    const hexString = [...new Uint8Array(valueDataView.buffer)].map(b => {
+      return b.toString(16).padStart(2, '0');
+    }).join(' ');
+    const textDecoder = new TextDecoder('ascii');
+    const asciiString = textDecoder.decode(valueDataView.buffer);
+    console.log(`  ${labelOfDataSource} Data: ` + key +
+      '\n    (Hex) ' + hexString +
+      '\n    (ASCII) ' + asciiString);
+  };
 
 
 
