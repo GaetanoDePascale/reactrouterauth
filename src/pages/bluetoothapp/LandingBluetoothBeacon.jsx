@@ -19,12 +19,14 @@ const LandingBluetoothBeacon = () => {
         // , optionalServices: [OPTIONAL_SERVICE]
       })
         .then(device => {
-          setDevices([...devices, device]);
+          let beacon = {};
+          beacon.name= device.name;
+          beacon.id= device.id;
           console.log("> Connected to this device-->");
           console.log("> Name:             " + device.name);
           console.log("> Id:               " + device.id);
           device.watchAdvertisements();
-          return device.addEventListener('advertisementreceived', event => {
+          device.addEventListener('advertisementreceived', event => {
 
             let eddystone = event.serviceData.get(pw_service_uuid)
 
@@ -72,9 +74,15 @@ const LandingBluetoothBeacon = () => {
             }
 
             console.log('Found a Physical Web beacon: ', tx, url)
+            beacon.tx= tx;
+            beacon.url= url;
             device.forget();
+            setDevices([...devices, beacon]);
           })
+
+
         })
+
       // .then(server => {
       // })
       // .then(service => {
@@ -85,21 +93,6 @@ const LandingBluetoothBeacon = () => {
   };
 
   /* Utils */
-
-
-
-  const logDataView = (labelOfDataSource, key, valueDataView) => {
-    const hexString = [...new Uint8Array(valueDataView.buffer)].map(b => {
-      return b.toString(16).padStart(2, '0');
-    }).join(' ');
-    const textDecoder = new TextDecoder('ascii');
-    const asciiString = textDecoder.decode(valueDataView.buffer);
-    console.log(`  ${labelOfDataSource} Data: ` + key +
-      '\n    (Hex) ' + hexString +
-      '\n    (ASCII) ' + asciiString);
-  };
-
-
 
   return (
     <div>
