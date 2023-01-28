@@ -25,6 +25,7 @@ const LandingBluetooth = React.lazy(() => import('./pages/bluetoothapp/LandingBl
 const LandingBluetoothBeacon = React.lazy(() => import('./pages/bluetoothapp/LandingBluetoothBeacon'));
 const LandingReactBluetooth = React.lazy(() => import('./pages/bluetoothapp/LandingReactBluetooth'));
 const RandomNumber = React.lazy(() => import('./pages/RandomNumber'));
+const ReducerComponent = React.lazy(() => import('./pages/reducer/ReducerComponent'));
 
 //const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
 
@@ -54,6 +55,8 @@ export default function App() {
           <Route path="bluetooth/beacon" element={<LandingBluetoothBeacon />} />
           <Route path="bluetooth/reactbluetooth" element={<LandingReactBluetooth />} />
           <Route path="randomnumber" element={<RandomNumber />} />
+          <Route path="reducercomponent/new" element={<ReducerComponent key={'emptyReducerComponent'} />} />
+          <Route path="reducercomponent/:id" element={<ReducerComponent key={'filledReducerComponent'} initPageObject={{ name: 'test', description: 'prova descrizione' }} />} />
         </Route>
       </Routes>
     </Suspense>

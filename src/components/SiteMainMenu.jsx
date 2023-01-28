@@ -11,7 +11,8 @@ import {
   OrderedListOutlined,
   FontColorsOutlined,
   QuestionOutlined,
-  WifiOutlined
+  WifiOutlined,
+  TrademarkCircleOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
@@ -58,6 +59,23 @@ export const SiteMainMenu = (props) => {
       key: '/site/todolistapplication',
       label: 'ToDo List Application',
       icon: <UnorderedListOutlined />,
+    },
+    {
+      key: '/site/reducercomponent',
+      label: 'Reducer',
+      icon: <TrademarkCircleOutlined />,
+      children: [
+        {
+          key: '/site/reducercomponent/new',
+          label: 'Empty Reducer',
+          icon: <TrademarkCircleOutlined />,
+        },
+        {
+          key: '/site/reducercomponent/1',
+          label: 'Update Reducer',
+          icon: <TrademarkCircleOutlined />,
+        },
+      ]
     },
     {
       key: '/site/games',
