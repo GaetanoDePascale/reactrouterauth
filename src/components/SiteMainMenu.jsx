@@ -13,6 +13,7 @@ import {
   QuestionOutlined,
   WifiOutlined,
   TrademarkCircleOutlined,
+  TableOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
@@ -115,6 +116,11 @@ export const SiteMainMenu = (props) => {
           icon: <WifiOutlined />,
         },
       ],
+    },
+    {
+      key: '/site/googlesheetviewer',
+      label: 'Google Sheet Viewer',
+      icon: <TableOutlined />,
     },
   ];
 
