@@ -27,6 +27,7 @@ const LandingReactBluetooth = React.lazy(() => import('./pages/bluetoothapp/Land
 const RandomNumber = React.lazy(() => import('./pages/RandomNumber'));
 const ReducerComponent = React.lazy(() => import('./pages/reducer/ReducerComponent'));
 const GoogleSheetViewer = React.lazy(() => import('./pages/googlesheet/GoogleSheetViewer'));
+const UseWorkersApp = React.lazy(() => import('./pages/useworkers/UseWorkersApp'));
 
 //const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
 
@@ -59,6 +60,7 @@ export default function App() {
           <Route path="reducercomponent/new" element={<ReducerComponent key={'emptyReducerComponent'} />} />
           <Route path="reducercomponent/:id" element={<ReducerComponent key={'filledReducerComponent'} initPageObject={{ name: 'test', description: 'prova descrizione' }} />} />
           <Route path="googlesheetviewer" element={<GoogleSheetViewer />} />
+          <Route path="useworkers" element={<UseWorkersApp />} />
         </Route>
       </Routes>
     </Suspense>
