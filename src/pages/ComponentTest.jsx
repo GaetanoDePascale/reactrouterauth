@@ -29,7 +29,7 @@ const ComponentTest = () => {
                 {console.log(window.innerWidth, window.innerHeight)}
                 <Modal
                     title={modal.title}
-                    visible={modal.visible}
+                    open={modal.visible}
                     onOk={() => setModal({ title: '', content: <></>, visible: false })}
                     onCancel={() => setModal({ title: '', content: <></>, visible: false })}
                 >

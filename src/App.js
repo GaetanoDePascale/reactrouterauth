@@ -6,6 +6,7 @@ import './styles.css';
 // import 'antd/dist/antd.min.css';
 import { wordList } from './pages/wordle';
 
+
 const LoginPage = React.lazy(() => import('./pages/Login'));
 const HomePage = React.lazy(() => import('./pages/Home'));
 const ProtectedLayout = React.lazy(() => import('./components/ProtectedLayout'));
@@ -28,8 +29,9 @@ const RandomNumber = React.lazy(() => import('./pages/RandomNumber'));
 const ReducerComponent = React.lazy(() => import('./pages/reducer/ReducerComponent'));
 const GoogleSheetViewer = React.lazy(() => import('./pages/googlesheet/GoogleSheetViewer'));
 const UseWorkersApp = React.lazy(() => import('./pages/useworkers/UseWorkersApp'));
-
-//const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
+const FakeApi = React.lazy(() => import('./pages/FakeApi'));
+const  MSCMockup = React.lazy(() => import('./pages/msc-mockup/mockup'));
+const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
 
 export default function App() {
   return (
@@ -43,6 +45,7 @@ export default function App() {
           <Route path="submenu22" element={<SubMenu22 />} />
           <Route path="menu3" element={<Menu3 />} />
           <Route path="componenttest" element={<ComponentTest />} />
+          <Route path="testpage" element={<TestPage />} />
         </Route>
         <Route path="/site" element={<ProtectedLayout />}>
           <Route path="home" element={<SiteHomePage />} />
@@ -61,6 +64,8 @@ export default function App() {
           <Route path="reducercomponent/:id" element={<ReducerComponent key={'filledReducerComponent'} initPageObject={{ name: 'test', description: 'prova descrizione' }} />} />
           <Route path="googlesheetviewer" element={<GoogleSheetViewer />} />
           <Route path="useworkers" element={<UseWorkersApp />} />
+          <Route path="fakeapi" element={<FakeApi />} />
+          <Route path="msc-mockup" element={<MSCMockup />} />
         </Route>
       </Routes>
     </Suspense>

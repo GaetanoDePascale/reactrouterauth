@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "label": "Config test 01",
+        "active": false
+    },
+    {
+        "id": 2,
+        "label": "Configurazione Gaetano",
+        "active": true
+    }
+
+]

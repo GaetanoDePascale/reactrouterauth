@@ -1,0 +1,312 @@
+[
+	{
+		"jobTitle": "Asst. Bar Manager",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Asst. Bartender",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Bar Manager",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Bar Waiter/ss",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Bartender",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Buffet Supervisor",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Cabin Steward",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Dining Host/ess",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Dining Office Administrator",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Dining Operations Mgr.",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "F&B Crew Area Supervisor",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Head Bartender",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Head Waiter",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Restaurant Manager",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Sommelier",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Specialty Bartender",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Specialty Dining Host/ss",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Specialty Restaurant  Sommelier",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Specialty Restaurant Manager",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Specialty Restaurant Supervisor",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Specialty Waiter",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Waiter",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "YC Asst. Bartender",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "YC Bartender",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "YC Dining Host",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "YC Maitre d'Hotel",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "YC Sommelier",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "YC Waiter",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Shorex Manager",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Lounge Butler",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	},
+	{
+		"jobTitle": "Room Service Supervisor",
+		"Low": 0,
+		"Medium": 0,
+		"High": 0,
+		"ExceedsExpectations": 0,
+		"MeetsExpectations": 0,
+		"DoesNotMeetExpectations": 0,
+		"Unsatisfactory": 0
+	}
+]

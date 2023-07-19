@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "label": "Config test 02",
+        "active": false
+    },
+    {
+        "id": 2,
+        "label": "Configurazione di prova",
+        "active": true
+    },
+    {
+        "id": 3,
+        "label": "Configurazione finta",
+        "active": false
+    }
+]

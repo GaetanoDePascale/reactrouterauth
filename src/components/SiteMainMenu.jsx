@@ -15,6 +15,8 @@ import {
   TrademarkCircleOutlined,
   TableOutlined,
   LoadingOutlined,
+  UserOutlined,
+  EyeOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
@@ -127,6 +129,15 @@ export const SiteMainMenu = (props) => {
       key: '/site/useworkers',
       label: 'Use Workers',
       icon: <LoadingOutlined />,
+    },
+    {
+      key: '/site/fakeapi',
+      label: 'Fake API',
+      icon: <UserOutlined />,
+    },    {
+      key: '/site/msc-mockup',
+      label: 'MSC mockup',
+      icon: <EyeOutlined />,
     },
   ];
 
