@@ -32,6 +32,7 @@ const UseWorkersApp = React.lazy(() => import('./pages/useworkers/UseWorkersApp'
 const FakeApi = React.lazy(() => import('./pages/FakeApi'));
 const  MSCMockup = React.lazy(() => import('./pages/msc-mockup/mockup'));
 const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
+const Benchmarking = React.lazy(() => import('./pages/benchmarking/Benchmarking'));
 
 export default function App() {
   return (
@@ -66,6 +67,7 @@ export default function App() {
           <Route path="useworkers" element={<UseWorkersApp />} />
           <Route path="fakeapi" element={<FakeApi />} />
           <Route path="msc-mockup" element={<MSCMockup />} />
+          <Route path="benchmarking" element={<Benchmarking />} />
         </Route>
       </Routes>
     </Suspense>

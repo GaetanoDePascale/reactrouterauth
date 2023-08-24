@@ -140,6 +140,11 @@ export const SiteMainMenu = (props) => {
 			label: 'Mockup',
 			icon: <EyeOutlined />,
 		},
+		{
+			key: '/site/benchmarking',
+			label: 'Benchmarking',
+			icon: <EyeOutlined />,
+		},
 	];
 
 	return (
