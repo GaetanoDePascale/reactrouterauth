@@ -18,11 +18,14 @@ const MSCMockup = (props) => {
 	const [selectedMonth, setSelectedMonth] = useState('');
 
 	const [savedConfigurations, setSavedConfigurations] = useState([]);
-	const [selectedConfiguration, setSelectedConfiguration] = useState('');
+	const [selectedConfiguration, setSelectedConfiguration] = useState({
+		value: '',
+		label: '',
+	});
 	const [bonuses, setBonuses] = useState([]);
 
 	useEffect(() => {
-		setPageSubtitle('MSC Mockup');
+		setPageSubtitle('Mockup');
 	}, [setPageTitle, setPageSubtitle]);
 
 	const onChangeDate = (date, dateString) => {
@@ -30,7 +33,8 @@ const MSCMockup = (props) => {
 	};
 
 	const onChangeConfiguration = (value) => {
-		setSelectedConfiguration(value);
+		const conf = savedConfigurations.filter((x) => x.value === value);
+		setSelectedConfiguration(conf[0]);
 	};
 
 	useEffect(() => {
@@ -59,7 +63,7 @@ const MSCMockup = (props) => {
 		};
 
 		if (selectedMonth === '') {
-			setSelectedConfiguration('');
+			setSelectedConfiguration({ label: '', value: '' });
 			setBonuses([]);
 		} else {
 			const result = fetchData().catch(console.error);
@@ -77,7 +81,7 @@ const MSCMockup = (props) => {
 			}
 		};
 
-		if (selectedConfiguration !== '') {
+		if (selectedConfiguration.value !== '') {
 			const result = fetchData().catch(console.error);
 		}
 	}, [selectedConfiguration]);
@@ -118,12 +122,12 @@ const MSCMockup = (props) => {
 					/>
 				</Col>
 				<Col span={8}>
-					{selectedConfiguration === -1 && (
+					{selectedConfiguration.value === -1 && (
 						<Input placeholder='Nome della configurazione' />
 					)}
 				</Col>
 				<Col span={8}>
-					<Button disabled={selectedConfiguration === ''}>Save</Button>
+					<Button disabled={selectedConfiguration.value === ''}>Save</Button>
 				</Col>
 			</Row>
 			{bonuses.length === 0 && <Empty />}
@@ -146,9 +150,7 @@ const MSCMockup = (props) => {
 								textAlign: 'center',
 								fontWeight: 'bold',
 							}}
-						>
-							Job Title
-						</Col>
+						></Col>
 						<Col span={2} style={header2Style}>
 							Low
 						</Col>
