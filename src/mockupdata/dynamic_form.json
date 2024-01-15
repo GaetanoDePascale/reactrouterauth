@@ -1,0 +1,55 @@
+[
+    {
+        "id": 1,
+        "name": "Operazione 1",
+        "items": [
+            {
+                "id": 1,
+                "label": "Numeric",
+                "type": "NUMERIC",
+                "required": true,
+                "minValue": 0,
+                "maxValue": 100,
+                "defaultValue": null,
+                "validator": null
+            },
+            {
+                "id": 2,
+                "label": "Descrizione",
+                "type": "TEXT",
+                "required": false,
+                "minValue": null,
+                "maxValue": null,
+                "defaultValue": null,
+                "validator": "/textValidation"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Operazione 1",
+        "items": [
+            {
+                "id": 21,
+                "label": "Data",
+                "type": "DATETIME",
+                "required": false,
+                "minValue": null,
+                "maxValue": null,
+                "defaultValue": null,
+                "validator": null
+            },
+            {
+                "id": 22,
+                "label": "Descrizione",
+                "type": "TEXT",
+                "required": true,
+                "minValue": null,
+                "maxValue": null,
+                "defaultValue": "Data operazione",
+                "validator": "/textValidation"
+            }
+        ]
+    }
+
+]

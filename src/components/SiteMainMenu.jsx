@@ -17,6 +17,7 @@ import {
 	LoadingOutlined,
 	UserOutlined,
 	EyeOutlined,
+	FormOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
@@ -144,6 +145,11 @@ export const SiteMainMenu = (props) => {
 			key: '/site/benchmarking',
 			label: 'Benchmarking',
 			icon: <EyeOutlined />,
+		},
+		{
+			key: '/site/dynamic-form',
+			label: 'Form Builder',
+			icon: <FormOutlined />,
 		},
 	];
 

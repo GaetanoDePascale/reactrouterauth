@@ -30,9 +30,10 @@ const ReducerComponent = React.lazy(() => import('./pages/reducer/ReducerCompone
 const GoogleSheetViewer = React.lazy(() => import('./pages/googlesheet/GoogleSheetViewer'));
 const UseWorkersApp = React.lazy(() => import('./pages/useworkers/UseWorkersApp'));
 const FakeApi = React.lazy(() => import('./pages/FakeApi'));
-const  MSCMockup = React.lazy(() => import('./pages/msc-mockup/mockup'));
+const MSCMockup = React.lazy(() => import('./pages/msc-mockup/mockup'));
 const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
 const Benchmarking = React.lazy(() => import('./pages/benchmarking/Benchmarking'));
+const DynamicForm = React.lazy(() => import('./pages/dynamic-form/'));
 
 export default function App() {
   return (
@@ -53,6 +54,7 @@ export default function App() {
           <Route path="userProfile" element={<UserProfile />} />
           <Route path="numberconversion" element={<NumberConversion />} />
           <Route path="recursivecomponent" element={<DataComponent />} />
+          <Route path="dynamic-form" element={<DynamicForm />} />
           <Route path="conditionalwrapper" element={<ConditionalWrapperPage />} />
           <Route path="todolistapplication" element={<TodoListApplication />} />
           <Route path="games/tictactoe" element={<TicTacToeGame />} />

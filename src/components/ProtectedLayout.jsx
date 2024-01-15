@@ -60,7 +60,7 @@ const ProtectedLayout = () => {
               <Col span={24}>
                 <div style={{ width: '100%', textAlign: 'center', paddingLeft: '15px', verticalAlign: 'middle' }}>
                   <div style={{ float: 'left', width: 'calc(100% - 200px)' }}>
-                    <Title style={{ textAlign: 'center', verticalAlign: 'middle' }} ellipsis={true}>
+                    <Title style={{ textAlign: 'center', verticalAlign: 'middle', margin: 'auto' }} ellipsis={true}>
                       {pageTitle}
                     </Title>
                   </div>
