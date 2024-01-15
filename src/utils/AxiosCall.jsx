@@ -1,7 +1,7 @@
 import { notification } from 'antd';
 import axios from 'axios';
 import { useAuth } from '../hooks/useAuth';
-import { getMockupData } from '../mockupdata';
+import { getMockupData, getMockupPostData } from '../mockupdata';
 
 let window;
 const baseurl = window && window.__RUNTIME_CONFIG__ && window.__RUNTIME_CONFIG__.WEBAPI_URL;
@@ -62,7 +62,7 @@ export async function doAxiosPatch(url, postParams, props) {
 export async function doAxiosPost(url, postParams, props) {
   try {
     if (url.startsWith('@')) {
-      return getMockupData(url.substring(1));
+      return getMockupPostData(url.substring(1), postParams);
     }
     const _url = composeUrl(url);
 

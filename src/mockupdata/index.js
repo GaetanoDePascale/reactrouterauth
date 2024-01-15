@@ -30,6 +30,41 @@ export function getMockupData(url) {
     case 'dynamic-from':
       return { executionResult: true, data: dynamicFormData }
 
+
+
+    default:
+      return { executionResult: false, error: 'Not implemented in mockup!' };
+  }
+}
+
+export function getMockupPostData(url, postParams) {
+  console.log('using mockup data for ' + url);
+  switch (url) {
+    case 'currentItem':
+      const newItem = {
+        id: 23,
+        label: "Esito",
+        type: "TEXT",
+        required: true,
+        minValue: null,
+        maxValue: null,
+        value: "",
+        validator: null
+      };
+
+      const formData = [...postParams.formData]
+      formData.push(newItem);
+
+      const returnParams = {
+        formData,
+        values: {
+          ...postParams.values,
+          [postParams.currentItem.id]: 'calculated'
+        },
+        currentItem: postParams.currentItem,
+      }
+      return { executionResult: true, data: returnParams }
+
     default:
       return { executionResult: false, error: 'Not implemented in mockup!' };
   }

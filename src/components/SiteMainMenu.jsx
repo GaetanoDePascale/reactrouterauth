@@ -61,6 +61,11 @@ export const SiteMainMenu = (props) => {
 			icon: <QuestionOutlined />,
 		},
 		{
+			key: '/site/dynamic-form',
+			label: 'Form Builder',
+			icon: <FormOutlined />,
+		},
+		{
 			key: '/site/todolistapplication',
 			label: 'ToDo List Application',
 			icon: <UnorderedListOutlined />,
@@ -145,11 +150,6 @@ export const SiteMainMenu = (props) => {
 			key: '/site/benchmarking',
 			label: 'Benchmarking',
 			icon: <EyeOutlined />,
-		},
-		{
-			key: '/site/dynamic-form',
-			label: 'Form Builder',
-			icon: <FormOutlined />,
 		},
 	];
 

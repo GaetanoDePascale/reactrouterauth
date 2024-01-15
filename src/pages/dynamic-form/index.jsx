@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import { doAxiosGet } from "../../utils/AxiosCall";
-import { DatePicker, Drawer, Form, Input, InputNumber, List } from "antd";
+import { doAxiosGet, doAxiosPost } from "../../utils/AxiosCall";
+import { Col, DatePicker, Drawer, Input, InputNumber, List, Row } from "antd";
 import { EyeOutlined } from '@ant-design/icons';
 
 const DynamicForm = () => {
@@ -10,15 +10,30 @@ const DynamicForm = () => {
     const [pageState, setPageState] = useState({
             pageData: [],
             open: false,
-            formData: []
+            formData: [],
         });
     const [values, setValues] = useState({})
 
-    const changeHandler = e => {
-        console.log(values);
+    const changeHandler = (currentItem, value) => {
+        let currentValues = {...values};
 
-        setValues({...values, [e.target.name]: e.target.value})
-     }
+        if(currentItem.validator!==null) {
+            const postParams = {
+                formData: pageState.formData,
+                values: currentValues,
+                currentItem
+            }
+            doAxiosPost('@currentItem', postParams).then((res) => {
+                console.log(res);
+                if(res.executionResult) {
+                    setPageState({...pageState, formData: res.data.formData});
+                    setValues(res.data.values);
+                }
+            });
+        } else {
+            setValues({...values, [currentItem.id]: value})
+        }
+    }
 
     useEffect(() => {
         setPageSubtitle('Form Builder');
@@ -32,6 +47,10 @@ const DynamicForm = () => {
         });
     }, [])
 
+    const rowStyle = {
+        height: '50px'
+    }
+
     const onClickDetail = (selectedItem) => {
         setPageState({...pageState, open: true, formData: selectedItem.items});
     }
@@ -44,40 +63,43 @@ const DynamicForm = () => {
         if(items && items.length>0) {
             return items.map(i => {
                 return (
-                    <Form.Item
-                        key={i.id}
-                        label={i.label}
-                        name={i.id}
-                        rules={[{ required: i.required, message: `Please input ${i.label}!` }]}
-                    >
-                        {renderItem(i)}
-                    </Form.Item>
+                    <Row key={`RowForm_${i.id}`} style={rowStyle}>
+                        <Col key={`ColFormLabel_${i.id}`} span={4}>{i.label}</Col>
+                        <Col key={`ColFormInput_${i.id}`} span={18}>{renderItem(i)}</Col>
+                    </Row>
                 );
             })
         }
     }
 
+    const renderCalculatedItems = (items) => {
+
+        if(items && items.length>0) {
+            return items.map(i => {
+                return (
+                    <Row key={`RowCalculated_${i.id}`} style={rowStyle}>
+                        <Col key={`ColCalculatedLabel_${i.id}`} span={4}>{i.label}</Col>
+                        <Col key={`ColCalculatedValue_${i.id}`} span={18}>{values[i.id]}</Col>
+                    </Row>
+                );
+            })
+        }
+    }
+
+
     const renderItem = (item) => {
         switch (item.type) {
             case 'TEXT':
-                return <Input defaultValue={item.defaultValue} onChange={changeHandler} />;
+                return <Input key={`Input_${item.id}`} id={item.id} onChange={(e) => changeHandler(item, e.target.value)} />;
             case 'NUMERIC':
-                return <InputNumber min={item.minValue} max={item.maxValue} defaultValue={item.defaultValue} onChange={changeHandler} />;
+                return <InputNumber key={`Input_${item.id}`} id={item.id} min={item.minValue} max={item.maxValue} onChange={(e) => changeHandler(item, e)} />;
             case 'DATETIME':
-                return <DatePicker onChange={changeHandler} />;
+                return <DatePicker key={`Input_${item.id}`} id={item.id} onChange={(date, dateString) => changeHandler(item, dateString)} />;
                                 
             default:
                 return <></>;
         }
     }
-
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
-      
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
 
     return (<>
         <List
@@ -91,19 +113,12 @@ const DynamicForm = () => {
                 </List.Item>
             )}
         />
-        <Drawer title="Esegui Operazione" onClose={onClose} open={pageState.open}>
-            <Form
-                name="dynamicForm"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                style={{ maxWidth: 600 }}
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete="off"
-            >
-                {renderFormItems(pageState.formData)}
-            </Form>
+        <Drawer title="Esegui Operazione" onClose={onClose} open={pageState.open} placement={'bottom'}>
+            <Row>
+                <Col span={12}>{renderFormItems(pageState.formData)}</Col>
+                <Col span={12}>{renderCalculatedItems(pageState.formData)}</Col>
+            </Row>
+                
        </Drawer>
     </>);
 }

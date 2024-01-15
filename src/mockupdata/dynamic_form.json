@@ -10,7 +10,7 @@
                 "required": true,
                 "minValue": 0,
                 "maxValue": 100,
-                "defaultValue": null,
+                "value": null,
                 "validator": null
             },
             {
@@ -20,7 +20,7 @@
                 "required": false,
                 "minValue": null,
                 "maxValue": null,
-                "defaultValue": null,
+                "value": null,
                 "validator": "/textValidation"
             }
         ]
@@ -36,7 +36,7 @@
                 "required": false,
                 "minValue": null,
                 "maxValue": null,
-                "defaultValue": null,
+                "value": null,
                 "validator": null
             },
             {
@@ -46,7 +46,7 @@
                 "required": true,
                 "minValue": null,
                 "maxValue": null,
-                "defaultValue": "Data operazione",
+                "value": "Data operazione",
                 "validator": "/textValidation"
             }
         ]
