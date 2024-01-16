@@ -20,6 +20,7 @@ const TodoListApplication = React.lazy(() => import('./pages/todolistapplication
 const TicTacToeGame = React.lazy(() => import('./pages/tictactoe/TicTacToeGame'));
 const DataComponent = React.lazy(() => import('./pages/recursivecomponent/DataComponent'));
 const WordleGame = React.lazy(() => import('./pages/wordle/WordleGame'));
+const PongGame = React.lazy(() => import('./pages/pong/'));
 const ComponentTest = React.lazy(() => import('./pages/ComponentTest'));
 const ConditionalWrapperPage = React.lazy(() => import('./pages/conditionalwrapper/ConditionalWrapperPage'));
 const LandingBluetooth = React.lazy(() => import('./pages/bluetoothapp/LandingBluetooth'));
@@ -59,6 +60,7 @@ export default function App() {
           <Route path="todolistapplication" element={<TodoListApplication />} />
           <Route path="games/tictactoe" element={<TicTacToeGame />} />
           <Route path="games/wordle" element={<WordleGame {...{ wordList, solution: wordList[Math.floor(Math.random() * wordList.length)], nbRows: 5, nbCols: 5 }} />} />
+          <Route path="games/pong" element={<PongGame />} />
           <Route path="bluetooth/landing" element={<LandingBluetooth />} />
           <Route path="bluetooth/beacon" element={<LandingBluetoothBeacon />} />
           <Route path="bluetooth/reactbluetooth" element={<LandingReactBluetooth />} />

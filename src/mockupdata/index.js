@@ -7,6 +7,7 @@ import month_2023_02 from './month_2023_02.json';
 import range_bonuses from './range_bonuses.json';
 
 import dynamicFormData from './dynamic_form.json';
+import { getCalculatedFormData } from './fakeProcessing';
 
 export function getMockupData(url) {
   console.log('using mockup data for ' + url);
@@ -41,29 +42,7 @@ export function getMockupPostData(url, postParams) {
   console.log('using mockup data for ' + url);
   switch (url) {
     case 'currentItem':
-      const newItem = {
-        id: 23,
-        label: "Esito",
-        type: "TEXT",
-        required: true,
-        minValue: null,
-        maxValue: null,
-        value: "",
-        validator: null
-      };
-
-      const formData = [...postParams.formData]
-      formData.push(newItem);
-
-      const returnParams = {
-        formData,
-        values: {
-          ...postParams.values,
-          [postParams.currentItem.id]: 'calculated'
-        },
-        currentItem: postParams.currentItem,
-      }
-      return { executionResult: true, data: returnParams }
+      return { executionResult: true, data: getCalculatedFormData(postParams) }
 
     default:
       return { executionResult: false, error: 'Not implemented in mockup!' };

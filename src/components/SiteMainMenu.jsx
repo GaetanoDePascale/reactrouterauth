@@ -18,6 +18,7 @@ import {
 	UserOutlined,
 	EyeOutlined,
 	FormOutlined,
+	TeamOutlined,
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { Navigate } from 'react-router-dom';
@@ -101,6 +102,11 @@ export const SiteMainMenu = (props) => {
 					key: '/site/games/wordle',
 					label: 'Wordle',
 					icon: <FontColorsOutlined />,
+				},
+				{
+					key: '/site/games/pong',
+					label: 'Pong',
+					icon: <TeamOutlined />,
 				},
 			],
 		},
