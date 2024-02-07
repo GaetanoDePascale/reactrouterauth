@@ -10,14 +10,7 @@ function infiniteLoop() {
     turn += 8;
     lgoo.style.transform = `rotate(${turn % 360}deg)`;
 }
-/*
-When to use worker
-1. Image Processing
-2. Sorting or Processing large data sets.
-3. CSV or Excel export with large data.
-4. Canvas Drawing
-5. Any CPU-intensive tasks.
-*/
+
 export default function UseWorkersApp() {
     React.useEffect(() => {
         const loopInterval = setInterval(infiniteLoop, 100);

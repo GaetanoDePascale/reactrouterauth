@@ -11,27 +11,29 @@ const { Header, Sider, Content, Footer } = Layout;
 
 const ProtectedLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [activeItemId, setActiveItemId] = useState('/');
   const [pageTitle, setPageTitle] = useState('Application');
   const [pageSubtitle, setPageSubtitle] = useState('');
   const { user } = useAuth();
 
   const userData = JSON.parse(localStorage.getItem('user'));
-  const [admin] = useState(userData.role === 'admin' ? true : false);
+  const [admin] = useState(userData.role === 'admin');
 
   const navigate = useNavigate();
+  const [activeItemId, setActiveItemId] = useState(() => {
+    const initialItemId = admin ? '/' : '/site/home';
+    navigate(initialItemId, { replace: true });
+    return initialItemId;
+  });
 
   useEffect(() => {
-    if (!admin && !activeItemId.startsWith('/site/')) {
-      setActiveItemId('/site/home');
-      navigate('/site/home', { replace: true });
-    }
-  }, [admin, activeItemId, setActiveItemId]); // eslint-disable-line react-hooks/exhaustive-deps
+    setPageSubtitle('');
+  }, [activeItemId]);
 
   const handleMenuClick = (e) => {
-    if (e.key !== activeItemId) {
-      setActiveItemId(e.key);
-      navigate(e.key, { replace: true });
+    const newItemId = e.key;
+    if (newItemId !== activeItemId) {
+      setActiveItemId(newItemId);
+      navigate(newItemId, { replace: true });
     }
   };
 
@@ -72,16 +74,21 @@ const ProtectedLayout = () => {
             </Row>
           </Header>
           <Content className="site-layout" style={{ padding: '0 25px', marginTop: 10 }}>
-            <div style={{ width: '100%', textAlign: 'center', paddingLeft: '15px', verticalAlign: 'middle' }}>
-              <Title level={3} style={{ textAlign: 'center', verticalAlign: 'middle' }} ellipsis={true}>
-                {pageSubtitle}
-              </Title>
-            </div>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: '80vh' }}>
-              <Outlet context={[setPageTitle, setPageSubtitle]} />
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Test© 2022</Footer>
+          <div style={{ width: '100%', textAlign: 'center', paddingLeft: '15px', verticalAlign: 'middle' }}>
+            <Title level={3} style={{ textAlign: 'center', verticalAlign: 'middle' }} ellipsis={true}>
+              {pageSubtitle}
+            </Title>
+          </div>
+          <div className="site-layout-background" style={{ padding: 24, minHeight: '80vh' }}>
+            {activeItemId && (
+              <Outlet
+                context={[setPageTitle, setPageSubtitle]}
+                parentActiveItemId={activeItemId}
+              />
+            )}
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>Test© 2022</Footer>
         </Layout>
       </Layout>
     </div>

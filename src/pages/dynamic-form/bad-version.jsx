@@ -61,11 +61,11 @@ const DynamicForm = () => {
     
     const renderFormItems = (items) => {
         if(items && items.length>0) {
-            return items.map(i => {
+            return items.map((i, index) => {
                 return (
-                    <Row key={`RowForm_${i.id}`} style={rowStyle}>
-                        <Col key={`ColFormLabel_${i.id}`} span={4}>{i.label}</Col>
-                        <Col key={`ColFormInput_${i.id}`} span={18}>{renderItem(i)}</Col>
+                    <Row key={`RowForm_${index}`} style={rowStyle}>
+                        <Col key={`ColFormLabel_${index}`} span={4}>{i.label}</Col>
+                        <Col key={`ColFormInput_${index}`} span={18}>{renderItem(i)}</Col>
                     </Row>
                 );
             })
@@ -75,11 +75,11 @@ const DynamicForm = () => {
     const renderCalculatedItems = (items) => {
 
         if(items && items.length>0) {
-            return items.map(i => {
+            return items.map((i, index) => {
                 return (
-                    <Row key={`RowCalculated_${i.id}`} style={rowStyle}>
-                        <Col key={`ColCalculatedLabel_${i.id}`} span={4}>{i.label}</Col>
-                        <Col key={`ColCalculatedValue_${i.id}`} span={18}>{values[i.id]}</Col>
+                    <Row key={`RowCalculated_${index}`} style={rowStyle}>
+                        <Col key={`ColCalculatedLabel_${index}`} span={4}>{i.label}</Col>
+                        <Col key={`ColCalculatedValue_${index}`} span={18}>{values[i.id]}</Col>
                     </Row>
                 );
             })

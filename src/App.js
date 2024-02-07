@@ -6,7 +6,6 @@ import './styles.css';
 // import 'antd/dist/antd.min.css';
 import { wordList } from './pages/wordle';
 
-
 const LoginPage = React.lazy(() => import('./pages/Login'));
 const HomePage = React.lazy(() => import('./pages/Home'));
 const ProtectedLayout = React.lazy(() => import('./components/ProtectedLayout'));
@@ -34,7 +33,8 @@ const FakeApi = React.lazy(() => import('./pages/FakeApi'));
 const MSCMockup = React.lazy(() => import('./pages/msc-mockup/mockup'));
 const TestPage = React.lazy(() => import('./pages/testpage/TestPage'));
 const Benchmarking = React.lazy(() => import('./pages/benchmarking/Benchmarking'));
-const DynamicForm = React.lazy(() => import('./pages/dynamic-form/'));
+const DynamicFormBad = React.lazy(() => import('./pages/dynamic-form/bad-version'));
+const DynamicFormGood = React.lazy(() => import('./pages/dynamic-form/good-version'));
 
 export default function App() {
   return (
@@ -55,7 +55,8 @@ export default function App() {
           <Route path="userProfile" element={<UserProfile />} />
           <Route path="numberconversion" element={<NumberConversion />} />
           <Route path="recursivecomponent" element={<DataComponent />} />
-          <Route path="dynamic-form" element={<DynamicForm />} />
+          <Route path="dynamic-form/bad" element={<DynamicFormBad />} />
+          <Route path="dynamic-form/good" element={<DynamicFormGood />} />
           <Route path="conditionalwrapper" element={<ConditionalWrapperPage />} />
           <Route path="todolistapplication" element={<TodoListApplication />} />
           <Route path="games/tictactoe" element={<TicTacToeGame />} />

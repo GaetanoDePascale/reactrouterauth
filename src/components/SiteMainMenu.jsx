@@ -65,6 +65,18 @@ export const SiteMainMenu = (props) => {
 			key: '/site/dynamic-form',
 			label: 'Form Builder',
 			icon: <FormOutlined />,
+			children: [
+				{
+					key: '/site/dynamic-form/bad',
+					label: 'Bad Code',
+					icon: <FormOutlined />,
+				},
+				{
+					key: '/site/dynamic-form/good',
+					label: 'Good Code',
+					icon: <FormOutlined />,
+				},
+			],
 		},
 		{
 			key: '/site/todolistapplication',
